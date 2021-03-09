@@ -1,17 +1,12 @@
 // THIRD PARTY DEPENDENCIES
 const express = require('express')
+// LOCAL DEPENDENCIES
+const products = require('./routes/products')
 
 const app = express()
 
 app.use(express.json())
 
-app.get('/products', (req, res, next) => {
-  res.status(200).json({ response: 'this works' })
-})
-
-app.post('/products', (req, res, next) => {
-  console.log(req.body)
-  res.status(200).json('success')
-})
+app.use(products.router)
 
 module.exports = app
